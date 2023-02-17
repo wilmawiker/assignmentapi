@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cartRoutes = require("./routes/cartRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/v1/cart", cartRoutes);
+app.use("/api/v1/carts", cartRoutes);
+app.use("/api/v1/products", productRoutes);
 
 const port = process.env.PORT || 5000;
 async function run() {
