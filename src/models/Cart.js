@@ -21,6 +21,7 @@ let productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  _id: false,
 });
 
 const CartSchema = new mongoose.Schema({

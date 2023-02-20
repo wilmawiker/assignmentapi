@@ -86,8 +86,13 @@ exports.addProductToCart = async (req, res, next) => {
 
     const updatedCart = await cart.save();
 
-    res.send(`Varukorg med id: ${cartId} har uppdaterats`);
-    return res.json(updatedCart);
+    return res
+      .setHeader(
+        "Location",
+        `http://localhost:${process.env.PORT}/api/v1/carts/${updatedCart._id}`
+      )
+      .status(201)
+      .json(updatedCart);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -121,8 +126,13 @@ exports.removeProductFromCart = async (req, res, next) => {
 
     const updatedCart = await cart.save();
 
-    res.send(`Varukorg med id: ${cartId} har uppdaterats`);
-    return res.json(updatedCart);
+    return res
+      .setHeader(
+        "Location",
+        `http://localhost:${process.env.PORT}/api/v1/carts/${updatedCart._id}`
+      )
+      .status(201)
+      .json(updatedCart);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
